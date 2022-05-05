@@ -14,12 +14,12 @@ public class SortingAlgorithms {
 				if (isAscending) {
 					if (array[i] > array[i + 1]) {
 						//difference between ascending and descending is just '>'/'<' this sign
-						swap(array, i, i + 1);
+						Utils.swap(array, i, i + 1);
 						isSwapped = true;
 					}
 				} else {
 					if (array[i] < array[i + 1]) {
-						swap(array, i, i + 1);
+						Utils.swap(array, i, i + 1);
 						isSwapped = true;
 					}
 				}
@@ -38,11 +38,11 @@ public class SortingAlgorithms {
 		while (end > start) {
 			int index;
 			if (isAscending)
-				index = getMaxIndex(array, start, end);         // we are finding the max element
-			else index = getMinIndex(array, start, end);         // we are finding the min element
+				index = Utils.getMaxIndex(array, start, end);         // we are finding the max element
+			else index = Utils.getMinIndex(array, start, end);         // we are finding the min element
 			if (index != end) {
 				// if the max/min element is not at the end we will swap last element with selected element
-				swap(array, end, index);
+				Utils.swap(array, end, index);
 			}
 			end--;
 		}
@@ -57,12 +57,12 @@ public class SortingAlgorithms {
 			for (int end = start + 1; end > 0; end--) {                       //this one will run backward
 				if (isAscending) {
 					if (array[end] < array[end - 1]) {
-						swap(array, end, end - 1);
+						Utils.swap(array, end, end - 1);
 					} else
 						break;                   // if the new element is already at its correct position break the loop
 				} else {
 					if (array[end] > array[end - 1]) {
-						swap(array, end, end - 1);
+						Utils.swap(array, end, end - 1);
 					} else
 						break;                   // if the new element is already at its correct position break the loop
 				}
@@ -71,29 +71,4 @@ public class SortingAlgorithms {
 		}
 	}
 
-	private static int getMinIndex(int[] array, int start, int end) {
-		int min = 0;
-		for (int i = start; i <= end; i++) {
-			if (array[i] < array[min]) {
-				min = i;
-			}
-		}
-		return min;
-	}
-
-	public static void swap(int[] array, int swap1, int swap2) {
-		int temp = array[swap1];
-		array[swap1] = array[swap2];
-		array[swap2] = temp;
-	}
-
-	private static int getMaxIndex(int[] array, int start, int end) {
-		int max = 0;
-		for (int i = start; i <= end; i++) {
-			if (array[i] > array[max]) {
-				max = i;
-			}
-		}
-		return max;
-	}
 }

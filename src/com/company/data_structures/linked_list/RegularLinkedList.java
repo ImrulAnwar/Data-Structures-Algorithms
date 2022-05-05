@@ -2,8 +2,9 @@ package com.company.data_structures.linked_list;
 
 public class RegularLinkedList {
 	private int size = 0;
+	Node head = new Node(0);
 
-	public class Node {
+	private class Node {
 		int data;
 		Node next;
 
@@ -11,9 +12,8 @@ public class RegularLinkedList {
 			data = value;
 			next = null;
 		}
-	}
 
-	Node head = new Node(0);
+	}
 
 	RegularLinkedList(int value) {
 		head.data = value;
