@@ -14,7 +14,7 @@ public class StackUsingArray<DataType> {
 		return top == -1;
 	}
 
-	boolean isFull() {
+	boolean isNotEmpty() {
 		return top != -1;
 	}
 

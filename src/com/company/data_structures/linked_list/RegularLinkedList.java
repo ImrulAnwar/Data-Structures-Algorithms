@@ -12,7 +12,6 @@ public class RegularLinkedList {
 			data = value;
 			next = null;
 		}
-
 	}
 
 	RegularLinkedList(int value) {
@@ -20,11 +19,10 @@ public class RegularLinkedList {
 		size++;
 	}
 
-	RegularLinkedList() {
-
-	}
+	RegularLinkedList() {	}
 
 	void printLIst() {
+		//traversal
 		if (size != 0) {
 			Node temp = head;
 			while (temp != null) {
