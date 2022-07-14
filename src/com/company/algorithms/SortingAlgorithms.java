@@ -70,4 +70,60 @@ public class SortingAlgorithms {
 			start++;
 		}
 	}
+
+	public static void quickSort(int[] arr) {
+		quickSort(arr, 0, arr.length - 1);
+	}
+
+	public static void quickSort(int[] arr, int start, int end) {
+		if (start >= end) return;
+		int leftIndicator, rightIndicator;
+		leftIndicator = start;
+		rightIndicator = end;
+		int pivot = arr[end];
+
+		//partition
+		while (leftIndicator < rightIndicator) {
+			while (arr[leftIndicator] <= pivot && leftIndicator < rightIndicator) {
+				leftIndicator++;
+			}
+			while (arr[rightIndicator] >= pivot && leftIndicator < rightIndicator) {
+				rightIndicator--;
+			}
+			Utils.swap(arr, leftIndicator, rightIndicator);
+		}
+
+		Utils.swap(arr, leftIndicator, end);
+
+		quickSort(arr, start, leftIndicator - 1);
+		quickSort(arr, leftIndicator + 1, end);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
