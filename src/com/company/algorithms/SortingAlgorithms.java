@@ -102,11 +102,18 @@ public class SortingAlgorithms {
 		}
 	}
 
-	public static void quickSort(int[] arr) {
-		quickSort(arr, 0, arr.length - 1);
+	public static void quickSort(int[] arr, boolean isAscending) {
+		/*select a pivot
+		* all the elements that are LESS than pivot put them on the LEFT side of the pivot
+		* and all the elements that are GREATER than pivot put them on the RIGHT side of the pivot
+		* quickSort the left part
+		* quickSort the right part*/
+		//it is not stable
+		if (isAscending) quickSortAscending(arr, 0, arr.length - 1);
+		else quickSortDescending(arr, 0, arr.length - 1);
 	}
 
-	public static void quickSort(int[] arr, int start, int end) {
+	public static void quickSortAscending(int[] arr, int start, int end) {
 		if (start >= end) return;
 		int leftIndicator, rightIndicator;
 		leftIndicator = start;
@@ -124,8 +131,31 @@ public class SortingAlgorithms {
 		}
 		Utils.swap(arr, leftIndicator, end);
 
-		quickSort(arr, start, leftIndicator - 1);
-		quickSort(arr, leftIndicator + 1, end);
+		quickSortAscending(arr, start, leftIndicator - 1);
+		quickSortAscending(arr, leftIndicator + 1, end);
+	}
+
+	public static void quickSortDescending(int[] arr, int start, int end) {
+		if (start >= end) return;
+		int leftIndicator, rightIndicator;
+		leftIndicator = start;
+		rightIndicator = end;
+		int pivot = arr[end];
+		//partition
+		while (leftIndicator < rightIndicator) {
+			//in descending only this condition will change
+			while (arr[leftIndicator] >= pivot && leftIndicator < rightIndicator) {
+				leftIndicator++;
+			}
+			while (arr[rightIndicator] <= pivot && leftIndicator < rightIndicator) {
+				rightIndicator--;
+			}
+			Utils.swap(arr, leftIndicator, rightIndicator);
+		}
+		Utils.swap(arr, leftIndicator, end);
+
+		quickSortDescending(arr, start, leftIndicator - 1);
+		quickSortDescending(arr, leftIndicator + 1, end);
 	}
 }
 
